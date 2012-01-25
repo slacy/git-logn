@@ -1,0 +1,28 @@
+ABOUT
+~~~~~
+
+git-logn is a minor mode for emacs that uses "git blame" to highlight the
+last 2 days worth of commits for any file that you enable it for.
+
+It's heavily based on git-blame.el, and is unabashedly ripped off from that file.
+
+It's exactly like git-blame, except:
+- It only shows commits from the last 2 days
+- It uses a predictable "lighter to darker" highlighting scheme.  Newer
+  commits are lighter colored.
+- It doesn't show the commit details in the editor, but still does when you
+  hover with the mouse.
+
+SETUP
+~~~~~
+
+Add the following to your .emacs.d/init.el:
+
+(defun my-git-logn-hook()
+  (require 'git-logn)
+  (git-logn-mode 't)
+  )
+
+And then for any mode where you want to enable git-logn:
+
+(add-hook 'python-mode-hook 'my-git-logn-hook)
